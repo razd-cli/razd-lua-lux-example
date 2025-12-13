@@ -9,6 +9,7 @@ labels = ["learning"]
 license = "MIT"
 
 [dependencies]
+argparse = "==0.7"
 # Add your dependencies here
 # busted = ">=2.0"
 
