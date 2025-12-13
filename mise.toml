@@ -1,0 +1,3 @@
+[tools]
+# Using vfox plugin for lux from GitHub
+"vfox:dealenx/vfox-plugin-lux" = "latest"
