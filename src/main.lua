@@ -1,25 +1,40 @@
 -- My Lua Project
--- A simple Lux project example
+-- A CLI that checks if a string contains "hello"
 
-print("Hello from Lux!")
+local argparse = require("argparse")
+
+-- Create the argument parser
+local parser = argparse("hello-checker", "Check if a string contains 'hello'")
+
+parser:argument("input", "The string to check for 'hello'")
+parser:flag("-i --ignore-case", "Ignore case when checking (default: true)")
+parser:flag("-v --verbose", "Show verbose output")
+
+-- Parse arguments
+local args = parser:parse()
 
 -- Check if a string contains "hello"
-local function contains_hello(text)
-    return string.lower(text):find("hello") ~= nil
+local function contains_hello(text, ignore_case)
+    if ignore_case then
+        return string.lower(text):find("hello") ~= nil
+    else
+        return text:find("hello") ~= nil
+    end
 end
 
--- Example usage
-local test_strings = {
-    "Hello, World!",
-    "Good morning",
-    "Say hello to Lua",
-    "Goodbye"
-}
+-- Run the check
+local input = args.input
+local ignore_case = not args.ignore_case -- default is to ignore case
+local result = contains_hello(input, ignore_case)
 
-print("\nChecking for 'hello' in strings:")
-print(string.rep("-", 40))
+if args.verbose then
+    print("Input: " .. input)
+    print("Ignore case: " .. tostring(ignore_case))
+    print(string.rep("-", 40))
+end
 
-for _, str in ipairs(test_strings) do
-    local result = contains_hello(str) and "[+] contains 'hello'" or "[-] no 'hello'"
-    print(string.format("%-20s -> %s", str, result))
+if result then
+    print("[+] The string contains 'hello'!")
+else
+    print("[-] The string does not contain 'hello'.")
 end
