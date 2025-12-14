@@ -1,6 +1,7 @@
 mise:
   tools:
     task: latest
+    lua: "5.4"
     "vfox:dealenx/vfox-plugin-lux": latest
 
 tasks:
