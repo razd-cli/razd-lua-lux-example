@@ -17,16 +17,16 @@ tasks:
       - echo "📦 Installing tools..."
       - mise install
       - echo "📦 Building project and installing dependencies..."
-      - lx build
+      - mise exec -- lx build
 
   dev:
     desc: "Run the Lua application with sample input"
     cmds:
       - echo "🚀 Running application..."
-      - lx run -- "hello world"
+      - mise exec -- lx run -- "hello world"
 
   build:
     desc: "Build the project"
     cmds:
       - echo "🔨 Building project..."
-      - lx build
+      - mise exec -- lx build
