@@ -25,9 +25,3 @@ tasks:
     cmds:
       - echo "🚀 Running application..."
       - mise exec -- lx run -- "hello world"
-
-  build:
-    desc: "Build the project"
-    cmds:
-      - echo "🔨 Building project..."
-      - mise exec -- lx build
